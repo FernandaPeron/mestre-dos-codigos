@@ -165,29 +165,183 @@ Objeto literal (`{}`) é a forma menos verbosa de se criar um objeto em javascri
 
 10. Qual a diferença no uso de XMLHttpRequest e Fetch? E qual devemos usar atualmente?
 
+    Ambas as abordagens são APIs disponíveis no ambiente javascript do browser para transferir dados entre cliente e servidor. **XMLHttpRequest** é mais antigo e carrega no nome o XML, sendo que não necessariamente os dados transferidos precisam ser XML. O **Fetch** é mais novo e utiliza Promises para fazer a transferência dos dados, sendo a principal diferença entre ambos. Por utilizar Promises, o Fetch facilita o processo de manipulação de respostas e, por ser mais nova, recebe mais atualizações que o XMLHttpRequest. Portanto, atualmente devemos utilizar o Fetch.
+
 ---
 
 11. O que são Promises? Como podemos declarar uma promise em javascript?
+
+    Promises são objetos utilizados para obter valores de forma assíncrona e possui três estados: *pending* 
+    *fulfilled* ou *rejected*. O primeiro representa o estado "em andamento" da operação, o segundo representa que a operação foi finalizada com sucesso e o terceiro significa que houve alguma falha na operação.
+
+    Podemos criar uma Promise com seu construtor:
+
+    `new Promise()`.
+
+    Como parâmetro, temos uma função que possui dois parâmetros: resolve e reject
+
+    `new Promise((resolve, reject) => {})`
+
+    **resolve()** deve ser chamada quando a função foi finalizada com sucesso, e **reject()** deve ser chamado para indicar um erro
+
+    ```javascript
+    const myPromise = new Promise((resolve, reject) => {
+        const value = getValue();
+        if (value.status === 200) {
+            resolve(value.data);
+            return;
+        }
+        reject(value.reason);
+    })
+    ```
+
+    Podemos agora indicar ações posteriores à *Promise* com as funções `.then()`, `.catch()`e `finally()`. 
+
+    - As ações do `then()` são executadas quando a *Promise* é resolvida com sucesso e possui dois *callbacks* como parâmetro: uma função a ser chamada no sucesso da operação da *Promise* (quando `value.status === 200` no nosso exemplo) e uma função a ser chamada na falha da *Promise* (`value.status !== 200`)
+
+      - ```javascript
+        function onFulfilled() { /* Faz algo no sucesso da promise */ }
+        function onRejected() { /* Faz algo na falha da promise */ }
+        myPromise.then(onFulfilled, onRejected)
+        ```
+
+      Cada função `then()` também retorna uma *Promise*, permitindo o encadeamento:
+
+      ````javascript
+      myPromise.then(function1).then(function2) [...]
+      ````
+
+      O callback onRejected (segundo parâmetro do `then()`) irá gerenciar erros ocorridos na função em que o `then()` foi chamado (myPromise). Possíveis erros originados na função onFulfilled devem ser tratados pela função `catch()`.
+
+      ````javascript
+      const myPromise = new Promise((resolve, reject) => reject()); // forçando rejeição da Promise
+      myPromise
+          .then(
+              () => console.log('onFulfilled'),
+              () => console.log('onRejected')
+          ).catch(
+              () => console.log('catch')
+          )
+      // console: onRejected
+      
+      const onFulfilled = () => { throw new Error() }; // forçando erro em onFulfilled
+      const onRejected = () => { console.log('onRejected') }
+      
+      const myPromise2 = new Promise((resolve) => resolve()); // Promise sendo resolvida com sucesso
+      
+      myPromise2
+          .then(onFulfilled, onRejected)
+          .catch(() => console.log('catch'))
+      // console: catch. O erro de onFulfilled foi gerenciado pela função catch(), e não pela função onRejected
+      ````
+
+    - A função de `catch()` é chamada quando algum erro não gerenciado é gerado em qualquer lugar da cadeia de *promises*, e seu callback recebe como parâmetro o erro que originou a chamada: `catch((error) => {})`.
+
+    - Por fim, `finally()` é chamada por último, seja a *Promise* resolvida com sucesso ou com falhas.
 
 ---
 
 12. Liste 3 formas de iterar um Array em javascript e explique a diferença entre cada um deles.
 
+    - A forma clássica é o método utilizado por diversas linguagens: o **for**.
+
+      ````javascript
+      for(var i = 0; i < array.length; i++){
+      	// alguma manipulação com array[i]
+      }
+      ````
+
+      Ele não é diretamente uma função do *prototype* do Array em javascript como os próximos exemplos, mas pode ser utilizado para acessar posições no array de acordo com uma variável que é incrementada a cada loop.
+
+    - No *prototype* de Array, temos a função `forEach()`. Esta função possui como parâmetro uma função que tem acesso a três parâmetros: o elemento do array, o índice desse elemento no array e o próprio array. Sua intenção é puramente iterar sobre o array e executar a função em cada elemento, não possuindo um retorno. 
+
+      ````javascript
+      myArray.forEach((element, index, array) => {
+          //
+      });
+      ````
+
+    - Também no *prototype* de Array, há a função `map()`. Ela também possui uma função como parâmetro que recebe os mesmos parâmetros de `forEach()`. Este método serve para iterar no array a fim de criar um novo array como resultado, fazendo manipulações em cada elemento.
+
+      ````javascript
+      const myArray = [1, 2];
+      const newArray = myArray.map((element, index, array) => {
+          return element *= 2;;
+      });
+      // newArray: [2, 4];
+      ````
+
 ---
 
 13. Quando utilizar map, reduce ou filter?
+
+    `map()` deve ser utilizado quando se deseja gerar um novo array com elementos modificados de outro array.
+
+    `reduce()` é utilizado quando se necessita fazer operações onde os valores dos arrays são "acumulados", ou seja: a cada nova iteração, o resultado da iteração anterior é passado para a nova iteração. Ex: somar todos os números de um array. Com isso, você estará "reduzindo" os valores do array a um só.
+
+    `filter()`, como o nome sugere, deve ser utilizado quando se deseja filtrar uma lista de algum valor. Ele retornará um novo array com todos os elementos que obedecerem a condição estipulada na função de callback.
 
 ---
 
 14. Qual o método do Array é mais indicado para remover elementos?
 
+    Para remover elementos dada uma condição, o método utilizado é o `filter()`. Existem outros métodos de remoção, mas que se utilizam de condições fixas: remover o primeiro elemento, remover o último elemento e remover um elemento em um índice específico, por exemplo.
+
 ---
 
 15. Cite 4 métodos presentes na API de strings do Javascript e explique cada um deles;
 
+    - `replace()` - Utilizado para substituir uma string por outra.
+
+      - ````javascript
+        '123.56'.replace('.', ',');
+        // '123,56'
+        '123.56'.replace('.', '');
+        // '12356'
+        ````
+
+    - `includes()` - Utilizado para verificar se uma string possui uma outra string
+
+      - ````javascript
+        '123.56'.includes('.');
+        // true
+        '123.56'.includes('7');
+        // false
+        ````
+
+    - `split()` - Retorna um array com cada parte da string separada através de outra string 
+
+      - ````javascript
+        '01:30:59'.split(':');
+        // ['01', '30', '59']
+        '123'.split(':');
+        // ['123']
+        ````
+
+    - `trim()` - Retira o espaço em branco do início e do fim da string
+
+      - ````javascript
+        ' 12 3 '.trim()
+        // '12 3'
+        ````
+
 ---
 
 16. Escreva um código para inserir e resgatar items do LocalStorage/SessionStorage.
+
+    ````javascript
+    setItem(key, value) {
+      sessionStorage.setItem(key, value);
+    },
+    getItem(key) {
+      return sessionStorage.getItem(key);
+    },
+    removeItem(key) {
+      sessionStorage.removeItem(key);
+    },
+    ````
+
+    Para interagir com o localStorage, basta trocar "sessionStorage" por "localStorage". A diferença é que no localStorage os dados não expiram, já o sessionStorage tem seus dados expirados quando o browser é fechado. Ambos estão disponíveis no objeto window.
 
 ---
 
@@ -201,7 +355,7 @@ Objeto literal (`{}`) é a forma menos verbosa de se criar um objeto em javascri
 
     - for
 
-      ​	Método clássico de iteração, que possui número de iterações predefinidas como: `for([inicialização]; [condição]; [incremento]) {}`, executando o código dentro do bloco determinado número de vezes;
+      ​	Método clássico de iteração, que possui número de iterações predefinidas como: `for([inicialização]; [condição]; [incremento]) {}`, executando o código dentro do bloco determinado número de vezes enquanto a condição for verdadeira, incrementando a variável inicializada até esta atingir a condição;
 
     - do...while
 
