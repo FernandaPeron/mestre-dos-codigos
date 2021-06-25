@@ -193,13 +193,37 @@ Objeto literal (`{}`) é a forma menos verbosa de se criar um objeto em javascri
 
 17. Qual a melhor forma para definir um cookie utilizando javascript?
 
+    Cookies são definidos através da propriedade _cookie_ do objeto _document_, sendo pares "key=value" agrupados em uma string, separados por ponto e vírgula: `document.cookie = 'nome=Nome;sobrenome=Sobrenome'`. Manipular os dados pode ser trabalhoso por serem definidos em string, como por exemplo a remoção de um cookie. Dessa forma, é recomendado o uso de bibliotecas como a `js-cookie`, que facilita a manipulação através de métodos como `Cookies.set(nome, valor)` e `Cookies.get(nome)`. 
+
 ---
 
 18. Quais os tipos de Loops existentes em javascript?
 
+    - for
+
+      ​	Método clássico de iteração, que possui número de iterações predefinidas como: `for([inicialização]; [condição]; [incremento]) {}`, executando o código dentro do bloco determinado número de vezes;
+
+    - do...while
+
+      ​	Outro método amplamente utilizado em linguagens, que executa o código do bloco e então faz uma verificação de condição. `do {} white(condicao) `;
+
+    - while
+
+      ​	Assim como no método anterior, realiza uma ação dentro do bloco enquanto uma condição for verdadeira, com a diferença de que primeiro verifica a condição e então executa o bloco, não executando pelo menos uma vez e depois verificando a condição;
+
+    - for...in
+
+      ​	Mesma definição do bloco for, mudando o formato da condição dentro dos parêntesis: `for (variavel in objeto) {}`. Este formato itera sobre propriedades de um objeto: a cada iteração, "variável" será o nome de uma propriedade filha (key da propriedade);
+
+    - for...of
+
+      ​	Este método é utilizado em objetos iterativos para iterar sobre os valores, e não pelas "keys" de suas propriedades: `for (variavel of array) {}`. A cada iteração, "variavel" será o valor da propriedade presente no objeto iterativo.
+
 ---
 
 19. Descreva com suas palavras o que é hoisting?
+
+    Hoisting é a ação de "elevar" a declaração de uma variável para o topo do escopo em que ela foi declarada, dando a possibilidade de usar variáveis e funções inicializadas antes de serem declaradas
 
 ---
 
@@ -212,9 +236,9 @@ Objeto literal (`{}`) é a forma menos verbosa de se criar um objeto em javascri
 
 ---
 
-21. Quando eu posso utilizar o "Use-strict" no meu código?
+21. Quando eu posso utilizar o "use-strict" no meu código?
 
- - [ ] No ínicio do meu código
+ - [x] No ínicio do meu código
  - [ ] No inicio do block if
  - [ ] No inicio de um loop
- - [ ] no inicio de uma função
+ - [x] no inicio de uma função
