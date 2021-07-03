@@ -1,72 +1,134 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>YouTube Music</title>
+  <title>YouTube Music</title>
 
-        <link rel="icon" href="./img/favicon.png"/>
-        <link rel="stylesheet" href="css/index.css"/>
-        <link rel="stylesheet" href="css/global.css"/>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" rel="stylesheet">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
-    </head>
+  <link rel="icon" href="./img/favicon.png"/>
+  <link rel="stylesheet" href="css/index.css"/>
+  <link rel="stylesheet" href="css/global.css"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+</head>
 
-    <body class="home">
-        <div class="home__background"></div>
-        <div class="home__gradient-background"></div>
-        <header class="home__header">
-            <a href="index.html">
-                <img
-                    src="img/logo.svg"
-                    alt="youtube icon"
-                />
-            </a>
+<body class="home">
+  <div class="home__background"></div>
+  <div class="home__gradient-background"></div>
+  <header class="home__header-desktop">
+    <a href="index.html">
+      <img
+        class="home__logo-icon"
+        src="img/logo.svg"
+        alt="youtube icon"
+      />
+    </a>
 
-            <nav class="home__header-nav">
-                <ul>
-                    <li>
-                        <a href="#">Início</a>
-                    </li>
-                    <li>
-                        <a href="#">Explorar</a>
-                    </li>
-                    <li>
-                        <a href="#">Biblioteca</a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fas fa-search" aria-hidden="true"></i>
-                            Pesquisar
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+    <nav class="home__header-nav" aria-label="desktop header nav">
+      <ul>
+        <li>
+          <a
+            class="home__home-link"
+            href="#">Início</a>
+        </li>
+        <li>
+          <a
+            class="home__explore-link"
+            href="#">Explorar</a>
+        </li>
+        <li>
+          <a
+            class="home__library-link"
+            href="#">Biblioteca</a>
+        </li>
+        <li>
+          <a
+            class="home__search-link"
+            href="#">
+            <i class="fas fa-search" aria-hidden="true"></i>
+            Pesquisar
+          </a>
+        </li>
+      </ul>
+    </nav>
 
-            <img
-                src="./img/avatar.png"
-                alt="user avatar"
-                class="home__user-avatar"
-            />
-        </header>
+    <img
+      src="./img/avatar.png"
+      alt="user avatar"
+      class="home__user-avatar"
+    />
+  </header>
 
-        <div class="home__recommendations">
-            <h3>Recomendações</h3>
-            <div class="home__recommendations-wrapper">
-                <span class="home__recommendations-prev-btn">
-                    <i class="fas fa-angle-left" aria-hidden="true"></i>
-                </span>
-                <span class="home__recommendations-next-btn">
-                    <i class="fas fa-angle-right" aria-hidden="true"></i>
-                </span>
-            </div>
-        </div>
+  <header class="home__header-mobile">
+    <a href="index.html">
+      <img
+        class="home__logo-icon"
+        src="img/mobile_logo.svg"
+        alt="youtube icon"
+      />
+    </a>
 
-        <script src="js/recommendations.js"></script>
-        <script src="js/index.js"></script>
-    </body>
+    <nav class="home__header-nav" aria-label="mobile header nav">
+      <ul>
+        <li>
+          <a
+            class="home__home-link"
+            href="#"
+          >
+            <span class="fas fa-home"></span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="home__explore-link"
+            href="#"
+          >
+            <span class="fas fa-compass"></span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="home__library-link"
+            href="#"
+          >
+            <span class="fas fa-compact-disc"></span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="home__search-link"
+            href="#"
+          >
+            <span class="fas fa-search"></span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <img
+      src="./img/avatar.png"
+      alt="user avatar"
+      class="home__user-avatar"
+    />
+  </header>
+
+  <div class="home__recommendations">
+    <h3>Recomendações</h3>
+    <div class="home__arrows-wrapper">
+      <span class="home__recommendations-prev-btn">
+        <i class="fas fa-angle-left" aria-hidden="true"></i>
+      </span>
+        <span class="home__recommendations-next-btn">
+        <i class="fas fa-angle-right" aria-hidden="true"></i>
+      </span>
+    </div>
+    <div class="home__recommendations-wrapper"></div>
+  </div>
+
+<script type="module" src="js/index.js"></script>
+</body>
 </html>

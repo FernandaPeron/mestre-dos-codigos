@@ -1,4 +1,4 @@
-const carousel = document.querySelector('.home__recommendations-wrapper') || {};
+const carouselWrapper = document.querySelector('.home__recommendations-wrapper') || {};
 
 const recommendations = [
   {
@@ -59,6 +59,7 @@ function createAlbumDOM(album) {
   const albumThumbnail = document.createElement('img');
   albumThumbnail.className = 'home__recommendation-thumbnail';
   albumThumbnail.src = album.thumbnail;
+  albumThumbnail.alt = `Album ${album.title}`;
   const albumTitle = document.createElement('div');
   albumTitle.className = 'home__recommendation-title';
   albumTitle.innerText = album.title;
@@ -78,7 +79,11 @@ function createAlbumDOM(album) {
   return albumDiv;
 }
 
-recommendations.forEach(album => {
-  const albumDiv = createAlbumDOM(album);
-  carousel.appendChild(albumDiv);
-});
+export default {
+  createRecommendations() {
+    recommendations.forEach(album => {
+      const albumDiv = createAlbumDOM(album);
+      carouselWrapper.appendChild(albumDiv);
+    });
+  }
+}

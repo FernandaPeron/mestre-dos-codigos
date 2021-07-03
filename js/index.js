@@ -1,12 +1,12 @@
-const header = document.querySelector('.home__header') || {};
+import carousel from './carousel.js';
+import recommendations from './recommendations.js';
+import header from './header.js';
 
-function changeHeaderBackgroundColor() {
-  if (window.scrollY > 1) {
-    header.style.backgroundColor = 'black';
-    return;
-  }
-  header.style.backgroundColor = 'transparent';
-}
+header.init();
+recommendations.createRecommendations();
 
-window.addEventListener('scroll', changeHeaderBackgroundColor);
+const recommendationsPrevBtn = document.querySelector('.home__recommendations-prev-btn') || {};
+const recommendationsNextBtn = document.querySelector('.home__recommendations-next-btn') || {};
+const recommendationsWrapper = document.querySelector('.home__recommendations-wrapper') || {};
 
+carousel.init(recommendationsPrevBtn, recommendationsNextBtn, recommendationsWrapper);
