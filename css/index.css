@@ -83,6 +83,7 @@
 }
 
 .home__recommendations-prev-btn {
+    display: none;
     z-index: 1;
     cursor: pointer;
     position: absolute;
@@ -93,7 +94,6 @@
     height: 40px;
     border-radius: 50%;
     color: black;
-    display: flex;
     align-items: center;
     justify-content: center;
 }
@@ -125,10 +125,7 @@
 .home__recommendation {
     display: inline-block;
     position: relative;
-}
-
-.home__recommendation {
-    display: inline-block;
+    max-width: 190px;
 }
 
 .home__recommendation-thumbnail {
@@ -136,6 +133,23 @@
     position: relative;
     height: 190px;
     width: 190px;
+}
+
+.home__recommendation-thumbnail-wrapper:after {
+    content: ' ';
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 50%);
+    opacity: 0;
+    transition: all .5s;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.home__recommendation-thumbnail-wrapper:hover:after {
+    opacity: 1;
 }
 
 .home__recommendation-title {
