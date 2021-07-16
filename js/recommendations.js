@@ -1,4 +1,5 @@
-const carouselWrapper = document.querySelector('.home__recommendations-wrapper') || {};
+import { createAlbum } from './album.js';
+import carousel from './carousel.js';
 
 const recommendations = [
   {
@@ -53,55 +54,25 @@ const recommendations = [
   }
 ]
 
-function createThumbnail(album) {
-  const thumbnailWrapper = document.createElement('div');
-  thumbnailWrapper.className = 'home__recommendation-thumbnail-wrapper';
-  const albumThumbnail = document.createElement('img');
-  albumThumbnail.className = 'home__recommendation-thumbnail';
-  albumThumbnail.src = album.thumbnail;
-  albumThumbnail.alt = `Album ${album.title}`;
-  thumbnailWrapper.appendChild(albumThumbnail);
-  return thumbnailWrapper;
-}
-
-function createAlbumTitle(album) {
-  const albumTitle = document.createElement('div');
-  albumTitle.className = 'home__recommendation-title';
-  albumTitle.innerText = album.title;
-  return albumTitle;
-}
-
-function createAlbumArtists(album) {
-  const albumArtists = document.createElement('div');
-  albumArtists.className = 'home__recommendation-artists';
-
-  album.artists.forEach(artist => {
-    const artistSpan = document.createElement('span');
-    artistSpan.innerText = artist;
-    albumArtists.appendChild(artistSpan);
+function createRecommendationsOnDOM() {
+  const carouselWrapper = document.querySelector('.home__recommendations-wrapper') || {};
+  recommendations.forEach(album => {
+    const albumDiv = createAlbum(album);
+    carouselWrapper.appendChild(albumDiv);
   });
-  return albumArtists;
 }
 
-function createAlbum(album) {
-  const albumDiv = document.createElement('div');
-  albumDiv.className = 'home__recommendation';
-  const albumThumbnail = createThumbnail(album);
-  const albumTitle = createAlbumTitle(album);
-  const albumArtists = createAlbumArtists(album);
+function initCarousel() {
+  const recommendationsPrevBtn = document.querySelector('.home__prev-btn.recommendations') || {};
+  const recommendationsNextBtn = document.querySelector('.home__next-btn.recommendations') || {};
+  const recommendationsWrapper = document.querySelector('.home__recommendations-wrapper') || {};
 
-  albumDiv.appendChild(albumThumbnail);
-  albumDiv.appendChild(albumTitle);
-  albumDiv.appendChild(albumArtists);
-
-  return albumDiv;
+  carousel.init(recommendationsPrevBtn, recommendationsNextBtn, recommendationsWrapper);
 }
 
 export default {
-  createRecommendations() {
-    recommendations.forEach(album => {
-      const albumDiv = createAlbum(album);
-      carouselWrapper.appendChild(albumDiv);
-    });
-  }
+  init() {
+    createRecommendationsOnDOM();
+    initCarousel();
+  },
 }

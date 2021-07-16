@@ -1,4 +1,4 @@
-const TRANSLATE_PIXELS_BY_ITEM = 143.5;
+const TRANSLATE_PIXELS_BY_ITEM = 255;
 
 export default class Carousel {
 

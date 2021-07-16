@@ -6,9 +6,8 @@
 
   <title>YouTube Music</title>
 
-  <link rel="icon" href="./img/favicon.png"/>
+  <link rel="icon" href="https://music.youtube.com/favicon.ico"/>
   <link rel="stylesheet" href="css/index.css"/>
-  <link rel="stylesheet" href="css/global.css"/>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -117,17 +116,53 @@
   </header>
 
   <div class="home__recommendations">
-    <h3>Recomendações</h3>
+    <h2>Recomendações</h2>
     <div class="home__arrows-wrapper">
-      <span class="home__recommendations-prev-btn">
+      <span class="home__prev-btn recommendations">
         <i class="fas fa-angle-left" aria-hidden="true"></i>
       </span>
-        <span class="home__recommendations-next-btn">
+      <span class="home__next-btn recommendations">
         <i class="fas fa-angle-right" aria-hidden="true"></i>
       </span>
     </div>
     <div class="home__recommendations-wrapper"></div>
   </div>
+
+  <div class="home__favorites">
+    <h2>Favoritos</h2>
+    <div class="home__arrows-wrapper">
+      <span class="home__prev-btn favorites">
+        <i class="fas fa-angle-left" aria-hidden="true"></i>
+      </span>
+      <span class="home__next-btn favorites">
+        <i class="fas fa-angle-right" aria-hidden="true"></i>
+      </span>
+    </div>
+    <div class="home__favorites-wrapper"></div>
+  </div>
+
+  <div class="home__mixtapes">
+    <h2>Mixtapes criadas para você</h2>
+    <div class="home__arrows-wrapper">
+      <span class="home__prev-btn mixtapes">
+        <i class="fas fa-angle-left" aria-hidden="true"></i>
+      </span>
+      <span class="home__next-btn mixtapes">
+        <i class="fas fa-angle-right" aria-hidden="true"></i>
+      </span>
+    </div>
+    <div class="home__mixtapes-wrapper"></div>
+  </div>
+
+  <footer class="home__footer">
+    <div>
+      <i class="fab fa-twitter"></i>
+      <i class="fab fa-facebook"></i>
+      <i class="fab fa-instagram"></i>
+      <i class="fab fa-whatsapp"></i>
+    </div>
+    <div>Copyright © 2021 - Fernanda Peron</div>
+  </footer>
 
 <script type="module" src="js/index.js"></script>
 </body>
