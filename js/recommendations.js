@@ -55,7 +55,7 @@ const recommendations = [
 ]
 
 function createRecommendationsOnDOM() {
-  const carouselWrapper = document.querySelector('.home__recommendations-wrapper') || {};
+  const carouselWrapper = document.querySelector('.home__recommendations-content') || {};
   recommendations.forEach(album => {
     const albumDiv = createAlbum(album);
     carouselWrapper.appendChild(albumDiv);
@@ -63,11 +63,12 @@ function createRecommendationsOnDOM() {
 }
 
 function initCarousel() {
-  const recommendationsPrevBtn = document.querySelector('.home__prev-btn.recommendations') || {};
-  const recommendationsNextBtn = document.querySelector('.home__next-btn.recommendations') || {};
-  const recommendationsWrapper = document.querySelector('.home__recommendations-wrapper') || {};
+  const prevBtn = document.querySelector('.home__prev-btn.recommendations') || {};
+  const nextBtn = document.querySelector('.home__next-btn.recommendations') || {};
+  const wrapper = document.querySelector('.home__recommendations-wrapper') || {};
+  const content = document.querySelector('.home__recommendations-content') || {};
 
-  carousel.init(recommendationsPrevBtn, recommendationsNextBtn, recommendationsWrapper);
+  carousel.init(prevBtn, nextBtn, wrapper, content);
 }
 
 export default {

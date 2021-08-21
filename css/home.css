@@ -120,9 +120,23 @@
     justify-content: center;
 }
 
+.home__recommendations-wrapper::-webkit-scrollbar,
+.home__mixtapes-wrapper::-webkit-scrollbar,
+.home__favorites-wrapper::-webkit-scrollbar {
+    height: 0;
+}
+
 .home__recommendations-wrapper,
 .home__mixtapes-wrapper,
 .home__favorites-wrapper {
+    overflow: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.home__recommendations-content,
+.home__mixtapes-content,
+.home__favorites-content {
     display: flex;
     flex-wrap: nowrap;
     gap: 25px;
@@ -144,5 +158,6 @@
 .home__footer .fab {
     margin: 8px 15px;
     font-size: 20px;
+    cursor: pointer;
 }
 

@@ -13,6 +13,19 @@
     cursor: pointer;
 }
 
+
+@media screen and (max-width: 768px) {
+    .artist {
+        max-width: 190px;
+    }
+
+    .artist__thumbnail {
+        height: 190px;
+        width: 190px;
+    }
+}
+
+
 .artist__title {
     margin-top: 10px;
     font-size: 16px;

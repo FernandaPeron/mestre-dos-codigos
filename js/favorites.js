@@ -35,15 +35,16 @@ const artists = [
 ]
 
 function initCarousel() {
-    const favoritesPrevBtn = document.querySelector('.home__prev-btn.favorites') || {};
-    const favoritesNextBtn = document.querySelector('.home__next-btn.favorites') || {};
-    const favoritesWrapper = document.querySelector('.home__favorites-wrapper') || {};
+    const prevBtn = document.querySelector('.home__prev-btn.favorites') || {};
+    const nextBtn = document.querySelector('.home__next-btn.favorites') || {};
+    const wrapper = document.querySelector('.home__favorites-wrapper') || {};
+    const content = document.querySelector('.home__favorites-content') || {};
 
-    carousel.init(favoritesPrevBtn, favoritesNextBtn, favoritesWrapper);
+    carousel.init(prevBtn, nextBtn, wrapper, content);
 }
 
 function createFavoritesOnDOM() {
-    const carouselWrapper = document.querySelector('.home__favorites-wrapper') || {};
+    const carouselWrapper = document.querySelector('.home__favorites-content') || {};
     artists.forEach(artist => {
         const artistDiv = createArtists(artist);
         carouselWrapper.appendChild(artistDiv);

@@ -40,15 +40,16 @@ const mixtapes = [
 ]
 
 function initCarousel() {
-    const mixtapesPrevBtn = document.querySelector('.home__prev-btn.mixtapes') || {};
-    const mixtapesNextBtn = document.querySelector('.home__next-btn.mixtapes') || {};
-    const mixtapesWrapper = document.querySelector('.home__mixtapes-wrapper') || {};
+    const prevBtn = document.querySelector('.home__prev-btn.mixtapes') || {};
+    const nextBtn = document.querySelector('.home__next-btn.mixtapes') || {};
+    const wrapper = document.querySelector('.home__mixtapes-wrapper') || {};
+    const content = document.querySelector('.home__mixtapes-content') || {};
 
-    carousel.init(mixtapesPrevBtn, mixtapesNextBtn, mixtapesWrapper);
+    carousel.init(prevBtn, nextBtn, wrapper, content);
 }
 
 function createMixtapesOnDOM() {
-    const carouselWrapper = document.querySelector('.home__mixtapes-wrapper') || {};
+    const carouselWrapper = document.querySelector('.home__mixtapes-content') || {};
     mixtapes.forEach(album => {
         const albumDiv = createAlbum(album);
         carouselWrapper.appendChild(albumDiv);
