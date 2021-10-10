@@ -6,7 +6,7 @@ O desafio proposto é uma construir uma landing page baseada no YouTube Music co
 
 O projeto conta com algumas questões básicas sobre Javascript no arquivo [QUESTIONS.md](QUESTIONS.md).
 
-#### Execução do projeto
+### Execução do projeto
 É necessário executar o arquivo [index.html](index.html) em um servidor local para evitar problemas de Cross-Origin para os assets (imagens, fonte e ícones) utilizados.
 
 Uma alternativa para tal é a instalação do [**Node.js**](https://nodejs.org/en/download/) para utilização do `http-server`.
