@@ -76,15 +76,9 @@
     cursor: pointer;
 }
 
-.home__recommendations {
+.home__recommendations, .home__mixtapes, .home__favorites {
     position: relative;
-    margin: 35px;
-    overflow: hidden;
-}
-
-.home__mixtapes, .home__favorites {
-    position: relative;
-    margin: 50px 35px 35px;
+    margin: 90px 35px;
     overflow: hidden;
 }
 

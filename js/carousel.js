@@ -7,31 +7,35 @@ export default class Carousel {
     this.nextBtn = nextBtn;
     this.carousel = wrapper;
     this.content = content;
-    this.carouselWidth = this.carousel.offsetWidth;
+    this.carouselWidth = this.carousel.offsetWidth + GAP;
+  }
+
+  reachedMaxRightScroll = () => {
+    return this.content.scrollWidth - this.carouselWidth <= this.carousel.scrollLeft + this.carouselWidth;
   }
 
   onClickNext = () => {
-    this.carousel.scrollBy(this.carouselWidth + GAP, 0);
+    this.carousel.scrollBy(this.carouselWidth, 0);
     if (this.carousel.scrollWidth !== 0) {
       this.prevBtn.style.display = 'flex';
     }
-    if (this.content.scrollWidth - this.carouselWidth - GAP <= this.carousel.scrollLeft + this.carouselWidth) {
+    if (this.reachedMaxRightScroll()) {
       this.nextBtn.style.display = "none";
     }
   }
 
   onClickPrevious = () => {
-    this.carousel.scrollBy(-(this.carouselWidth + GAP), 0);
-    if (this.carousel.scrollLeft - this.carouselWidth - GAP <= 0) {
+    this.carousel.scrollBy(-this.carouselWidth, 0);
+    if (this.carousel.scrollLeft - this.carouselWidth <= 0) {
       this.prevBtn.style.display = "none";
     }
-    if (!this.content.scrollWidth - this.carouselWidth - GAP <= this.carousel.scrollLeft + this.carouselWidth) {
+    if (-this.carouselWidth <= this.carousel.scrollLeft + this.carouselWidth) {
       this.nextBtn.style.display = "flex";
     }
   }
 
   calculateCarouselWidth = () => {
-    this.carouselWidth = this.carousel.offsetWidth;
+    this.carouselWidth = this.carousel.offsetWidth + GAP;
   }
 
   checkNextBtnVisibility = () => {
