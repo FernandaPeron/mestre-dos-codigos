@@ -1,63 +1,63 @@
-import { createAlbum } from './album.js';
+import createItem from './item.js';
 import carousel from './carousel.js';
 
 const recommendations = [
   {
     thumbnail: 'img/thumbnail/recommendations/edm.jpg',
     title: 'EDM',
-    artists: ['Alok', 'Cat Dealers', 'Vintage Culture', 'Chris Lake']
+    subtitle: ['Alok', 'Cat Dealers', 'Vintage Culture', 'Chris Lake'],
   },
   {
     thumbnail: 'img/thumbnail/recommendations/trance.jpg',
     title: 'Trance',
-    artists: ['Mandragora', 'Infected Mushroom', 'Astrix', 'Henrique Camacho']
+    subtitle: ['Mandragora', 'Infected Mushroom', 'Astrix', 'Henrique Camacho'],
   },
   {
     thumbnail: 'img/thumbnail/recommendations/offbeat.jpg',
     title: 'Offbeat',
-    artists: ['Phaxe', 'Querox', 'Morten Granau', 'Neelix', 'Durs']
+    subtitle: ['Phaxe', 'Querox', 'Morten Granau', 'Neelix', 'Durs'],
   },
   {
     thumbnail: 'img/thumbnail/recommendations/metal.jpg',
     title: 'Metal',
-    artists: ['Rammstein', 'Metallica', 'Disturbed', 'Motörhead']
+    subtitle: ['Rammstein', 'Metallica', 'Disturbed', 'Motörhead'],
   },
   {
     thumbnail: 'img/thumbnail/recommendations/alternative.jpg',
     title: 'Alternativa',
-    artists: ['Young the Giant', 'Arctic Monkeys', 'Imagine Dragons', 'The Neighbourhood']
+    subtitle: ['Young the Giant', 'Arctic Monkeys', 'Imagine Dragons', 'The Neighbourhood'],
   },
   {
     thumbnail: 'img/thumbnail/recommendations/rap.jpg',
     title: 'Rap',
-    artists: ['Snoop Dogg', 'Eminem', 'Dr. Dre', '2Pac', 'Busta Rhymes']
+    subtitle: ['Snoop Dogg', 'Eminem', 'Dr. Dre', '2Pac', 'Busta Rhymes'],
   },
   {
     thumbnail: 'img/thumbnail/recommendations/pop.jpg',
     title: 'Pop',
-    artists: ['The Chainsmokers', 'Halsey', 'Lady Gaga', 'Dua Lipa', 'Lana Del Rey']
+    subtitle: ['The Chainsmokers', 'Halsey', 'Lady Gaga', 'Dua Lipa', 'Lana Del Rey'],
   },
   {
     thumbnail: 'img/thumbnail/recommendations/funk.jpg',
     title: 'Funk',
-    artists: ['Ludmilla', 'Anitta', 'MC Kevinho', 'Lexa', 'POCAH']
+    subtitle: ['Ludmilla', 'Anitta', 'MC Kevinho', 'Lexa', 'POCAH'],
   },
   {
     thumbnail: 'img/thumbnail/recommendations/chill.jpg',
     title: 'Chill',
-    artists: ['SOMMA', 'Regard', 'ZHU', 'Bassnectar', 'Liquid Stranger']
+    subtitle: ['SOMMA', 'Regard', 'ZHU', 'Bassnectar', 'Liquid Stranger'],
   },
   {
     thumbnail: 'img/thumbnail/recommendations/on-road.jpg',
     title: 'On the Road',
-    artists: ['AC/DC', 'ZZ Top', 'Mötley Crüe', 'Ozzy Osbourne', 'The Black Keys']
-  }
-]
+    subtitle: ['AC/DC', 'ZZ Top', 'Mötley Crüe', 'Ozzy Osbourne', 'The Black Keys'],
+  },
+];
 
 function createRecommendationsOnDOM() {
   const carouselWrapper = document.querySelector('.home__recommendations-content') || {};
-  recommendations.forEach(album => {
-    const albumDiv = createAlbum(album);
+  recommendations.forEach((album) => {
+    const albumDiv = createItem(album);
     carouselWrapper.appendChild(albumDiv);
   });
 }
@@ -76,4 +76,4 @@ export default {
     createRecommendationsOnDOM();
     initCarousel();
   },
-}
+};

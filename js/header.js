@@ -26,5 +26,5 @@ export default {
     window.addEventListener('scroll', changeHeaderBackgroundColor);
     window.addEventListener('resize', changeHeaderItems);
     changeHeaderItems();
-  }
-}
+  },
+};

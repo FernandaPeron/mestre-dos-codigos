@@ -5,50 +5,10 @@
     max-width: 230px;
 }
 
-.artist__thumbnail {
+.artist .item__thumbnail {
     border-radius: 50%;
     position: relative;
     height: 230px;
     width: 230px;
     cursor: pointer;
-}
-
-
-@media (max-width: 768px) {
-    .artist {
-        max-width: 190px;
-    }
-
-    .artist__thumbnail {
-        height: 190px;
-        width: 190px;
-    }
-}
-
-@media (min-width: 768px) and (max-width: 1024px) {
-    .artist {
-        max-width: 215px;
-    }
-
-    .artist__thumbnail {
-        height: 215px;
-        width: 215px;
-    }
-}
-
-
-.artist__title {
-    margin-top: 10px;
-    font-size: 16px;
-}
-
-.artist__title:hover {
-    text-decoration: underline;
-    cursor: pointer;
-}
-
-.artist__subscribers {
-    font-size: 16px;
-    color: #ffffffb3;
-    font-weight: 400;
 }

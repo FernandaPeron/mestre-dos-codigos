@@ -1,7 +1,6 @@
 const GAP = 10;
 
 export default class Carousel {
-
   constructor(prevBtn, nextBtn, wrapper, content) {
     this.prevBtn = prevBtn;
     this.nextBtn = nextBtn;
@@ -10,33 +9,31 @@ export default class Carousel {
     this.carouselWidth = this.carousel.offsetWidth + GAP;
   }
 
-  reachedMaxRightScroll = () => {
-    return this.content.scrollWidth - this.carouselWidth <= this.carousel.scrollLeft + this.carouselWidth;
-  }
-
   onClickNext = () => {
+    const reachedMaxRightScroll = this.content.scrollWidth - this.carouselWidth
+      <= this.carousel.scrollLeft + this.carouselWidth;
     this.carousel.scrollBy(this.carouselWidth, 0);
     if (this.carousel.scrollWidth !== 0) {
       this.prevBtn.style.display = 'flex';
     }
-    if (this.reachedMaxRightScroll()) {
-      this.nextBtn.style.display = "none";
+    if (reachedMaxRightScroll) {
+      this.nextBtn.style.display = 'none';
     }
-  }
+  };
 
   onClickPrevious = () => {
     this.carousel.scrollBy(-this.carouselWidth, 0);
     if (this.carousel.scrollLeft - this.carouselWidth <= 0) {
-      this.prevBtn.style.display = "none";
+      this.prevBtn.style.display = 'none';
     }
     if (-this.carouselWidth <= this.carousel.scrollLeft + this.carouselWidth) {
-      this.nextBtn.style.display = "flex";
+      this.nextBtn.style.display = 'flex';
     }
-  }
+  };
 
   calculateCarouselWidth = () => {
     this.carouselWidth = this.carousel.offsetWidth + GAP;
-  }
+  };
 
   checkNextBtnVisibility = () => {
     const BORDER_PX = 2;
@@ -45,16 +42,16 @@ export default class Carousel {
       : this.content.scrollWidth;
 
     if (scrollWidth === this.content.offsetWidth) {
-      this.nextBtn.style.display = `none`;
+      this.nextBtn.style.display = 'none';
       return;
     }
-    this.nextBtn.style.display = `flex`;
-  }
+    this.nextBtn.style.display = 'flex';
+  };
 
   onResize = () => {
     this.calculateCarouselWidth();
     this.checkNextBtnVisibility();
-  }
+  };
 
   static init(prevBtn, nextBtn, wrapper, content) {
     const carousel = new Carousel(prevBtn, nextBtn, wrapper, content);
